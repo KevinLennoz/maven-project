@@ -20,6 +20,5 @@ public class Greeter {
  */
   public final String greet(String someone) {
     return String.format("Hello, %s!", someone);
-    hello = "hello";
   }
 }
