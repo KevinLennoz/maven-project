@@ -1,2 +1,2 @@
 # simple maven-project
-scrutation par Kevin
+scrutation par Kevin v2
