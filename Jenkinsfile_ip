@@ -1,0 +1,51 @@
+pipeline {
+	agent any
+	
+	parameters {
+		string(name: 'tomcat_dev_ip',
+		defaultValue: 'C:/servers/apache-tomcat-9.0.56/webapps',
+		description: 'Staging Server : 8080')
+		string(name: 'tomcat_prod_ip',
+		defaultValue: 'C:/servers/apache-tomcat-9.0.56-prod/webapps',
+		description: 'Staging Server : 8090')
+	}
+	
+	triggers {
+		pollSCM('* * * * *')
+	}
+	
+	stages {
+		stage('Build') {
+			steps {
+				bat "mvn clean package"
+			}
+			
+			post{
+				success {
+					echo "Now archiving..."
+					archiveArtifacts artifacts : '**/target/*.war'
+				}
+			}
+		}
+		
+		stage('Deployments') {
+			parallel {
+				stage('Deploy to staging'){
+					steps {
+						deploy adapters: [tomcat9(credentialsId: 'b7c319c1-89ca-4246-9558-f531b2654313', path: '', url: 'http://localhost:8090')], 
+						contextPath: null, 
+						war: '**/*.war'
+					}
+				}
+				
+				stage('Deploy to production'){
+					steps {
+						deploy adapters: [tomcat9(credentialsId: 'b7c319c1-89ca-4246-9558-f531b2654313', path: '', url: 'http://localhost:9090')],
+						contextPath: null, 
+						war: '**/*.war'
+					}
+				}
+			}
+		}
+	}
+}
