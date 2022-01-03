@@ -7,7 +7,7 @@ pipeline {
 			defaultValue: 'C:\servers\apache-tomcat-9.0.56\webapps',
 			description: 'Staging Server : 8090')
 		string(name: 'tomcat_prod',
-			defaultValue: 'C:\servers\apache-tomcat-9.0.56-prod\webapps',
+			defaultValue: 'C:\servers\apache-tomcat-9.0.56 - prod\webapps',
 			description: 'Staging Server : 9090')
 	}
 	
