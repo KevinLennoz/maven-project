@@ -5,10 +5,10 @@ pipeline {
 	
 		string(name: 'tomcat_dev',
 			defaultValue: 'C:\servers\apache-tomcat-9.0.56\webapps',
-			description: 'Staging Server : 8080')
+			description: 'Staging Server : 8090')
 		string(name: 'tomcat_prod',
 			defaultValue: 'C:\servers\apache-tomcat-9.0.56-prod\webapps',
-			description: 'Staging Server : 8090')
+			description: 'Staging Server : 9090')
 	}
 	
 	triggers {
