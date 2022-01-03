@@ -32,7 +32,7 @@ pipeline {
 			parallel {
 				stage('Deploy to staging'){
 					steps {
-						deploy adapters: [tomcat9(credentialsId: 'b7c319c1-89ca-4246-9558-f531b2654313', path: '', url: ${params.tomcat_dev_ip})], 
+						deploy adapters: [tomcat9(credentialsId: 'b7c319c1-89ca-4246-9558-f531b2654313', path: '', url: "${params.tomcat_dev_ip}")], 
 						contextPath: null, 
 						war: '**/*.war'
 					}
@@ -40,7 +40,7 @@ pipeline {
 				
 				stage('Deploy to production'){
 					steps {
-						deploy adapters: [tomcat9(credentialsId: 'b7c319c1-89ca-4246-9558-f531b2654313', path: '',  url: ${params.tomcat_prod_ip})],
+						deploy adapters: [tomcat9(credentialsId: 'b7c319c1-89ca-4246-9558-f531b2654313', path: '',  url: "${params.tomcat_prod_ip}")],
 						contextPath: null, 
 						war: '**/*.war'
 					}
