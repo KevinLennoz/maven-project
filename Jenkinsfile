@@ -3,10 +3,10 @@ pipeline {
 	
 	parameters {
 	string(name: 'tomcat_dev',
-	defaultValue: 'C:\servers\apache-tomcat-9.0.56\webapps',
+	defaultValue: 'C:/servers/apache-tomcat-9.0.56/webapps',
 	description: 'Staging Server : 8080')
 	string(name: 'tomcat_prod',
-	defaultValue: 'C:\servers\apache-tomcat-9.0.56-prod\webapps',
+	defaultValue: 'C:/servers/apache-tomcat-9.0.56-prod/webapps',
 	description: 'Staging Server : 8090')
 	}
 	
