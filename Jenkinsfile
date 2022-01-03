@@ -32,7 +32,7 @@ pipeline {
 			parallel {
 				stage('Deploy to staging'){
 					steps {
-						bat "copy **/target/*.war %tomcat_dev%"
+						bat "xcopy **/target/*.war %tomcat_dev%"
 					}
 				}
 				
